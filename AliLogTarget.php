@@ -55,4 +55,9 @@ class AliLogTarget extends Target
             return $ex->getMessage();
         }
     }
+
+    public function export()
+    {
+        $this->putLogs();
+    }
 }
