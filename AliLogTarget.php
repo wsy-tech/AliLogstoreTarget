@@ -9,11 +9,7 @@
  * Time: 17:08
  */
 use yii\log\Target;
-use \Aliyun_Log_Client;
-use \Aliyun_Log_Models_LogItem;
-use \Aliyun_Log_Models_PutLogsRequest;
-use \Aliyun_Log_Exception;
-//require_once "./Log_Autoload.php";
+require_once \Yii::$app->basePath.'/../vendor/alilog/yii2-ali-log/Log_Autoload.php';
 class AliLogTarget extends Target
 {
     public $endpoint;  //端点，服务所在区域
@@ -21,6 +17,7 @@ class AliLogTarget extends Target
     public $accessKey; //使用你的阿里云访问秘钥AccessKeySecret
     public $project; //项目名称
     public $logstore; //日志库名称
+    public $topic = 'log'; //
     private $client;
 
     public function init()
@@ -31,19 +28,19 @@ class AliLogTarget extends Target
 
 
 
-    function putLogs($topic = '')
+    function putLogs()
     {
-        //$this->client = new \Aliyun_Log_Client($this->endpoint, $this->accessKeyId, $this->accessKey);
-
-        $contents = array(
-            'TestKey' => 'TestContent'
-        );
+        $contents = array();
+        foreach ($this->messages as $message){
+            $text = $this->formatMessage($message);
+            $contents[$this->topic] = $text;
+        }
         $logItem = new \Aliyun_Log_Models_LogItem();
         $logItem->setTime(time());
         $logItem->setContents($contents);
         $logitems = array($logItem);
         $request = new \Aliyun_Log_Models_PutLogsRequest($this->project, $this->logstore,
-            $topic, null, $logitems);
+            $this->topic, null, $logitems);
 
         try {
             $response = $this->client->putLogs($request);
