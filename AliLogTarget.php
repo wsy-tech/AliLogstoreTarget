@@ -56,11 +56,3 @@ class AliLogTarget //extends Target
         }
     }
 }
-
-$log = new AliLogTarget();
-$log->endpoint = 'cn-hangzhou.sls.aliyuncs.com';
-$log->accessKeyId='LTAIJPWQ1pz6vZYP';
-$log->accessKey='2HiqFerXh0CGlg4isPeCTft0hf9ebA';
-$log->project = 'myproject0711';
-$log->logstore = 'mp001';
-echo $log->putLogs();

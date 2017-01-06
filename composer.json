@@ -1,14 +1,15 @@
 {
     "name": "alilog/yii2-ali-log",
-    "description": "",
+    "description": "push Syslog to alilog",
     "keywords": ["yii2", "extension", "ali", "log"],
     "homepage": "https://github.com/wsyteam/AliLogstoreTarget",
     "type": "yii2-extension",
     "license": "MIT",
+    "version":"1.0.0",
     "authors": [
         {
             "name": "wsyteam",
-            "email": "kartikv2@gmail.com"
+            "email": "zhengzhoufirst@gmail.com"
         }
     ],
     "minimum-stability": "dev",
