@@ -8,13 +8,13 @@
  * Date: 2017/1/5
  * Time: 17:08
  */
-//use yii\log\Target;
-//use \Aliyun_Log_Client;
-//use \Aliyun_Log_Models_LogItem;
-//use \Aliyun_Log_Models_PutLogsRequest;
-//use \Aliyun_Log_Exception;
+use yii\log\Target;
+use \Aliyun_Log_Client;
+use \Aliyun_Log_Models_LogItem;
+use \Aliyun_Log_Models_PutLogsRequest;
+use \Aliyun_Log_Exception;
 //require_once "./Log_Autoload.php";
-class AliLogTarget //extends Target
+class AliLogTarget extends Target
 {
     public $endpoint;  //端点，服务所在区域
     public $accessKeyId; //使用你的阿里云访问秘钥AccessKeyId
