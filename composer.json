@@ -12,5 +12,10 @@
             "email": "shiqiang0711@yahoo.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "wsy\\log\\": ""
+        }
+    },
     "minimum-stability": "dev"
 }
